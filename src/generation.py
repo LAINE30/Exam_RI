@@ -11,7 +11,7 @@ class RAGGenerator:
     Clase que maneja la formulación del contexto y la generación de la respuesta
     conversacional usando un modelo de lenguaje.
     """
-    def __init__(self, model_name: str = "gemini-2.5-flash", temperature: float = 0.0):
+    def __init__(self, model_name: str = "gemini-2.0-flash", temperature: float = 0.0):
         """
         Inicializa el modelo de lenguaje de LangChain (Gemini).
         Nota: Requiere que la variable de entorno GOOGLE_API_KEY esté configurada.
