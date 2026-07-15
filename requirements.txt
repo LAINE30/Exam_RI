@@ -1,0 +1,10 @@
+streamlit
+sentence-transformers
+chromadb
+langchain
+langchain-google-genai
+google-generativeai
+python-dotenv
+pandas
+kagglehub
+pytest
