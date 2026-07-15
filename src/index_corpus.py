@@ -3,7 +3,12 @@ Script para generar embeddings del corpus procesado e indexarlos en ChromaDB.
 """
 import json
 import os
+import sys
 from tqdm import tqdm
+
+# Aseguramos que la raíz del proyecto esté en el path de Python
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from src.embeddings import TextEmbedder
 from src.vector_db import VectorDB
 from dotenv import load_dotenv

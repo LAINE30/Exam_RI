@@ -11,7 +11,7 @@ import sys
 # Asegurar que el directorio raíz esté en el path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.retrieval import MultimodalRetriever
+from src.retrieval import TextRetriever
 from src.evaluation_metrics import precision_at_k, recall_at_k, ndcg_at_k
 
 QRELS_PATH = "data/evaluation/qrels.json"
@@ -41,8 +41,8 @@ def run_evaluation():
     print(f"Cargadas {len(queries)} consultas de evaluación desde {QRELS_PATH}\n")
 
     # 2. Inicializar el retriever
-    print("Inicializando MultimodalRetriever (CLIP + ChromaDB)...")
-    retriever = MultimodalRetriever()
+    print("Inicializando TextRetriever (Gemini + ChromaDB)...")
+    retriever = TextRetriever()
     print("¡Listo!\n")
 
     # 3. Evaluar cada query

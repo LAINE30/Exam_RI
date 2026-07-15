@@ -1,0 +1,39 @@
+{
+    "queries": [
+        {
+            "query_id": "q1",
+            "query_text": "A Comparison of Nature Inspired Algorithms for Multi-threshold Image Segmentation",
+            "relevant_doc_ids": [
+                "arxiv_1309"
+            ]
+        },
+        {
+            "query_id": "q2",
+            "query_text": "FedDG: Federated Domain Generalization on Medical Image Segmentation via Episodic Learning in Continuous Frequency Space",
+            "relevant_doc_ids": [
+                "arxiv_228"
+            ]
+        },
+        {
+            "query_id": "q3",
+            "query_text": "Hidden Markov Modeling for Maximum Likelihood Neuron Reconstruction",
+            "relevant_doc_ids": [
+                "arxiv_51"
+            ]
+        },
+        {
+            "query_id": "q4",
+            "query_text": "Box-Adapt: Domain-Adaptive Medical Image Segmentation using Bounding BoxSupervision",
+            "relevant_doc_ids": [
+                "arxiv_1518"
+            ]
+        },
+        {
+            "query_id": "q5",
+            "query_text": "Neural Style Transfer Improves 3D Cardiovascular MR Image Segmentation on Inconsistent Data",
+            "relevant_doc_ids": [
+                "arxiv_563"
+            ]
+        }
+    ]
+}

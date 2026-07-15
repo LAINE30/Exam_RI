@@ -7,7 +7,7 @@ El sistema fue optimizado para ejecutarse en la nube utilizando Streamlit Commun
 ## Tecnologías Utilizadas
 - **Python 3.10+**
 - **LangChain & Google Gemini (Flash 2.5):** Generación de respuestas y control estricto de contexto (Evitar alucinaciones).
-- **Google Generative AI Embeddings:** Generación de representaciones vectoriales ligeras para textos.
+- **Sentence-Transformers (HuggingFace):** Generación de representaciones vectoriales (embeddings) de forma 100% local, sin consumir cuota de API.
 - **ChromaDB:** Base de datos vectorial persistente.
 - **KaggleHub:** Descarga dinámica del dataset.
 - **Streamlit:** Interfaz gráfica tipo Chat.
@@ -57,7 +57,18 @@ Debes procesar y descargar el corpus antes de poder hacer consultas. (Asegúrate
 python src/data_processing.py
 
 # 2. Crea los embeddings y los guarda en ChromaDB localmente
+# Nota: La primera vez que lo corras, descargará el modelo all-MiniLM-L6-v2 de HuggingFace.
 python src/index_corpus.py
+```
+
+### 6. Evaluación Cuantitativa del Sistema
+Para calcular las métricas estándar de Recuperación de Información (Precision@k, Recall@k, NDCG@k) en base al corpus actual:
+```bash
+# 1. Genera un set de pruebas (Ground Truth sintético aleatorio)
+python src/generate_qrels.py
+
+# 2. Ejecuta la evaluación matemática
+python src/evaluate.py
 ```
 
 ### 6. Iniciar la Interfaz Web (Streamlit)

@@ -12,15 +12,27 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dotenv import load_dotenv
 
-# Cargar variables de entorno (como GOOGLE_API_KEY)
+# Solo para desarrollo local
 load_dotenv()
 
 # Configuración de página
 st.set_page_config(page_title="arXiv RAG Assistant", page_icon="📚", layout="wide")
 
-if "GOOGLE_API_KEY" not in os.environ or not os.environ["GOOGLE_API_KEY"]:
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+# Si no existe en .env, buscar en Streamlit Secrets
+if not GOOGLE_API_KEY:
+    try:
+        GOOGLE_API_KEY = st.secrets.get("GOOGLE_API_KEY")
+    except Exception:
+        pass
+
+if not GOOGLE_API_KEY:
     st.error("⚠️ No se encontró la variable GOOGLE_API_KEY. Por favor, añádela a tu archivo .env o en los secrets de Streamlit.")
     st.stop()
+
+# Asegurar que esté en las variables de entorno para las librerías
+os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 
 @st.cache_resource
 def load_pipeline():

@@ -1,26 +1,20 @@
 """
-Módulo para la generación de embeddings de texto usando Google Gemini.
+Módulo para la generación de embeddings de texto localmente.
 Requerimiento B.
 """
-import os
 from typing import List, Union
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from sentence_transformers import SentenceTransformer
 
 class TextEmbedder:
     """
-    Clase para manejar la generación de embeddings de texto con Google Gemini.
+    Clase para manejar la generación de embeddings de texto de forma 100% local.
     """
-    def __init__(self, model_name: str = "models/text-embedding-004"):
+    def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
         """
-        Inicializa el modelo de embeddings de Gemini.
+        Inicializa el modelo de embeddings local (se descargará la primera vez).
         """
-        print(f"Inicializando modelo de embeddings de Gemini ({model_name})...")
-        
-        # Validar que exista la API key en el entorno
-        if not os.environ.get("GOOGLE_API_KEY"):
-            raise ValueError("GOOGLE_API_KEY no encontrada en las variables de entorno.")
-            
-        self.embeddings_model = GoogleGenerativeAIEmbeddings(model=model_name)
+        print(f"Inicializando modelo de embeddings local ({model_name})...")
+        self.model = SentenceTransformer(model_name)
         
     def embed_text(self, texts: Union[str, List[str]]) -> List[List[float]]:
         """
@@ -35,7 +29,7 @@ class TextEmbedder:
         if isinstance(texts, str):
             texts = [texts]
             
-        # Generar embeddings usando la API de Gemini
-        embeddings = self.embeddings_model.embed_documents(texts)
+        # Generar embeddings localmente
+        embeddings = self.model.encode(texts).tolist()
         return embeddings
 
