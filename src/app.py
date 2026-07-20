@@ -39,7 +39,7 @@ def load_pipeline():
     from src.retrieval import TextRetriever
     from src.generation import RAGGenerator
     retriever = TextRetriever()
-    generator = RAGGenerator(model_name="gemini-2.0-flash", temperature=0.0)
+    generator = RAGGenerator(model_name="gemini-2.5-flash", temperature=0.7)
     return retriever, generator
 
 with st.spinner("Cargando modelo Gemini y base de datos vectorial..."):
